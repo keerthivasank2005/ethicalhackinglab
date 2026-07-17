@@ -1,0 +1,78 @@
+┌──(crypl-32㉿vbox)-[~]
+└─$ nmap -sn vulnweb.com
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-07-17 05:13 EDT
+Nmap scan report for vulnweb.com (44.228.249.3)
+Host is up (0.00029s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+Nmap done: 1 IP address (1 host up) scanned in 0.07 seconds
+                                                                                                                                                                                                                                    
+┌──(crypl-32㉿vbox)-[~]
+└─$ nmap -sS vulnweb.com
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-07-17 05:13 EDT
+Stats: 0:00:02 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 14.50% done; ETC: 05:13 (0:00:12 remaining)
+Nmap scan report for vulnweb.com (44.228.249.3)
+Host is up (0.0011s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+80/tcp   open  http
+81/tcp   open  hosts2-ns
+443/tcp  open  https
+3128/tcp open  squid-http
+
+Nmap done: 1 IP address (1 host up) scanned in 4.97 seconds
+
+┌──(crypl-32㉿vbox)-[~]
+┌──(crypl-32㉿vbox)-[~]
+└─$ nmap -sV vulnweb.com
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-07-17 05:16 EDT
+Nmap scan report for vulnweb.com (44.228.249.3)
+Host is up (0.0017s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE    VERSION
+80/tcp   open  http-proxy Squid http proxy 6.9
+81/tcp   open  http-proxy Squid http proxy 6.9
+443/tcp  open  https?
+3128/tcp open  http-proxy Squid http proxy 6.9
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 63.89 seconds
+                                                                                                                                                                                                                                    
+┌──(crypl-32㉿vbox)-[~]
+└─$ nmap -p 80 --script http-headers  vulnweb.com
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-07-17 05:18 EDT
+Nmap scan report for vulnweb.com (44.228.249.3)
+Host is up (0.00079s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+
+PORT   STATE SERVICE
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 14.19 seconds
+                                                              
+ 
+ ┌──(crypl-32㉿vbox)-[~]
+└─$ nmap -O vulnweb.com
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-07-17 05:26 EDT
+Nmap scan report for vulnweb.com (44.228.249.3)
+Host is up (0.0028s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+80/tcp   open  http
+81/tcp   open  hosts2-ns
+443/tcp  open  https
+3128/tcp open  squid-http
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: bridge|general purpose
+Running (JUST GUESSING): Oracle Virtualbox (98%), QEMU (94%)
+OS CPE: cpe:/o:oracle:virtualbox cpe:/a:qemu:qemu
+Aggressive OS guesses: Oracle Virtualbox (98%), QEMU user mode network gateway (94%)
+No exact OS matches for host (test conditions non-ideal).
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 8.11 seconds
+
+
