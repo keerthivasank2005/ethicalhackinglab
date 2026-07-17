@@ -1,0 +1,306 @@
+1.nslookup:
+
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup vulnweb.com
+Server:         10.0.2.3
+Address:        10.0.2.3#53
+
+Non-authoritative answer:
+Name:   vulnweb.com
+Address: 44.228.249.3
+
+                                                                                                                                                                                                                                            
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup -type=ns  vulnweb.com
+Server:         10.0.2.3
+Address:        10.0.2.3#53
+
+Non-authoritative answer:
+vulnweb.com     nameserver = ns-557.awsdns-05.net.
+vulnweb.com     nameserver = ns-136.awsdns-17.com.
+vulnweb.com     nameserver = ns-1450.awsdns-53.org.
+vulnweb.com     nameserver = ns-1588.awsdns-06.co.uk.
+
+Authoritative answers can be found from:
+
+                                                                                                                                                                                                                                            
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup -type=mx  vulnweb.com
+Server:         10.0.2.3
+Address:        10.0.2.3#53
+
+Non-authoritative answer:
+vulnweb.com     mail exchanger = 10 alt2.aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 alt1.aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 alt3.aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 alt4.aspmx.l.google.com.
+
+Authoritative answers can be found from:
+
+                                                                                                                                                                                                                                            
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup -type=text vulnweb.com
+unknown query type: text
+Server:         10.0.2.3
+Address:        10.0.2.3#53
+
+Non-authoritative answer:
+Name:   vulnweb.com
+Address: 44.228.249.3
+
+                                                                                                                                                                                                                                            
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup -type=soa vulnweb.com
+Server:         10.0.2.3
+Address:        10.0.2.3#53
+
+Non-authoritative answer:
+vulnweb.com
+        origin = ns-136.awsdns-17.com
+        mail addr = awsdns-hostmaster.amazon.com
+        serial = 1
+        refresh = 7200
+        retry = 900
+        expire = 1209600
+        minimum = 86400
+
+Authoritative answers can be found from:
+
+                                                                                                                                                                                                                                            
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup -type=any vulnweb.com 8.8.8.8
+Server:         8.8.8.8
+Address:        8.8.8.8#53
+
+Non-authoritative answer:
+Name:   vulnweb.com
+Address: 44.228.249.3
+vulnweb.com     nameserver = ns-1588.awsdns-06.co.uk.
+vulnweb.com     nameserver = ns-557.awsdns-05.net.
+vulnweb.com     nameserver = ns-136.awsdns-17.com.
+vulnweb.com     nameserver = ns-1450.awsdns-53.org.
+vulnweb.com
+        origin = ns-136.awsdns-17.com
+        mail addr = awsdns-hostmaster.amazon.com
+        serial = 1
+        refresh = 7200
+        retry = 900
+        expire = 1209600
+        minimum = 86400
+vulnweb.com     mail exchanger = 10 alt2.aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 alt4.aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 alt3.aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 alt1.aspmx.l.google.com.
+vulnweb.com     mail exchanger = 10 aspmx.l.google.com.
+vulnweb.com     text = "google-site-verification=4LQORV-lTi-d4GPxtBEQWmFnwff7UAazQc9gZvHukbw"
+vulnweb.com     text = "v=spf1 ~all"
+
+Authoritative answers can be found from:
+
+                                                                                                                                                                                                                                            
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup vulnweb.com 8.8.8.8 
+Server:         8.8.8.8
+Address:        8.8.8.8#53
+
+Non-authoritative answer:
+Name:   vulnweb.com
+Address: 44.228.249.3
+
+                                                                                                                                                                                                                                            
+┌──(crypl-32㉿vbox)-[~]
+└─$ nslookup -debug valnweb.com           
+;; Got SERVFAIL reply from 10.0.2.3
+Server:         10.0.2.3
+Address:        10.0.2.3#53
+
+------------
+    QUESTIONS:
+        valnweb.com, type = A, class = IN
+    ANSWERS:
+    AUTHORITY RECORDS:
+    ADDITIONAL RECORDS:
+------------
+** server can't find valnweb.com: SERVFAIL
+
+
+2.whatweb:
+
+
+┌──(crypl-32㉿vbox)-[~]
+└─$ whatweb google.com 
+http://google.com [301 Moved Permanently] Country[UNITED STATES][US], HTTPServer[gws], IP[142.251.221.110], RedirectLocation[http://www.google.com/], Title[301 Moved], UncommonHeaders[content-security-policy-report-only,cache-status], Via-Proxy[1.1 tg42cdec (squid/6.9)], X-Frame-Options[SAMEORIGIN], X-XSS-Protection[0]
+http://www.google.com/ [200 OK] Cookies[AEC,NID,__Secure-STRP], Country[UNITED STATES][US], HTML5, HTTPServer[gws], HttpOnly[AEC,NID], IP[142.251.155.119], Script, Title[Google], UncommonHeaders[content-security-policy-report-only,cache-status], Via-Proxy[1.1 tg42cdec (squid/6.9)], X-Frame-Options[SAMEORIGIN], X-XSS-Protection[0]
+                                                                                                                                                                                                                                    
+┌──(crypl-32㉿vbox)-[~]
+└─$ whatweb -v  google.com
+WhatWeb report for http://google.com
+Status    : 301 Moved Permanently
+Title     : 301 Moved
+IP        : 142.251.221.110
+Country   : UNITED STATES, US
+
+Summary   : HTTPServer[gws], RedirectLocation[http://www.google.com/], UncommonHeaders[content-security-policy-report-only,cache-status], Via-Proxy[1.1 tg42cdec (squid/6.9)], X-Frame-Options[SAMEORIGIN], X-XSS-Protection[0]
+
+Detected Plugins:
+[ HTTPServer ]
+        HTTP server header string. This plugin also attempts to 
+        identify the operating system from the server header. 
+
+        String       : gws (from server string)
+
+[ RedirectLocation ]
+        HTTP Server string location. used with http-status 301 and 
+        302 
+
+        String       : http://www.google.com/ (from location)
+
+[ UncommonHeaders ]
+        Uncommon HTTP server headers. The blacklist includes all 
+        the standard headers and many non standard but common ones. 
+        Interesting but fairly common headers should have their own 
+        plugins, eg. x-powered-by, server and x-aspnet-version. 
+        Info about headers can be found at www.http-stats.com 
+
+        String       : content-security-policy-report-only,cache-status (from headers)
+
+[ Via-Proxy ]
+        This plugin extracts the proxy server details from the Via 
+        param of the HTTP header. 
+
+        String       : 1.1 tg42cdec (squid/6.9)
+
+[ X-Frame-Options ]
+        This plugin retrieves the X-Frame-Options value from the 
+        HTTP header. - More Info: 
+        http://msdn.microsoft.com/en-us/library/cc288472%28VS.85%29.
+        aspx
+
+        String       : SAMEORIGIN
+
+[ X-XSS-Protection ]
+        This plugin retrieves the X-XSS-Protection value from the 
+        HTTP header. - More Info: 
+        http://msdn.microsoft.com/en-us/library/cc288472%28VS.85%29.
+        aspx
+
+        String       : 0
+
+HTTP Headers:
+        HTTP/1.1 301 Moved Permanently
+        Location: http://www.google.com/
+        Content-Type: text/html; charset=UTF-8
+        Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-U-QcjUaHcFj0V8NnDwmdxA' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+        Date: Fri, 17 Jul 2026 09:06:28 GMT
+        Expires: Sun, 16 Aug 2026 09:06:28 GMT
+        Cache-Control: public, max-age=2592000
+        Server: gws
+        Content-Length: 219
+        X-XSS-Protection: 0
+        X-Frame-Options: SAMEORIGIN
+        Age: 24
+        Cache-Status: tg42cdec;hit;detail=match
+        Via: 1.1 tg42cdec (squid/6.9)
+        Connection: close
+
+WhatWeb report for http://www.google.com/
+Status    : 200 OK
+Title     : Google
+IP        : 142.251.155.119
+Country   : UNITED STATES, US
+
+Summary   : Cookies[AEC,NID,__Secure-STRP], HTML5, HTTPServer[gws], HttpOnly[AEC,NID], Script, UncommonHeaders[content-security-policy-report-only,cache-status], Via-Proxy[1.1 tg42cdec (squid/6.9)], X-Frame-Options[SAMEORIGIN], X-XSS-Protection[0]
+
+Detected Plugins:
+[ Cookies ]
+        Display the names of cookies in the HTTP headers. The 
+        values are not returned to save on space. 
+
+        String       : __Secure-STRP
+        String       : AEC
+        String       : NID
+
+[ HTML5 ]
+        HTML version 5, detected by the doctype declaration 
+
+
+[ HTTPServer ]
+        HTTP server header string. This plugin also attempts to 
+        identify the operating system from the server header. 
+
+        String       : gws (from server string)
+
+[ HttpOnly ]
+        If the HttpOnly flag is included in the HTTP set-cookie 
+        response header and the browser supports it then the cookie 
+        cannot be accessed through client side script - More Info: 
+        http://en.wikipedia.org/wiki/HTTP_cookie 
+
+        String       : AEC,NID
+
+[ Script ]
+        This plugin detects instances of script HTML elements and 
+        returns the script language/type. 
+
+
+[ UncommonHeaders ]
+        Uncommon HTTP server headers. The blacklist includes all 
+        the standard headers and many non standard but common ones. 
+        Interesting but fairly common headers should have their own 
+        plugins, eg. x-powered-by, server and x-aspnet-version. 
+        Info about headers can be found at www.http-stats.com 
+
+        String       : content-security-policy-report-only,cache-status (from headers)
+
+[ Via-Proxy ]
+        This plugin extracts the proxy server details from the Via 
+        param of the HTTP header. 
+
+        String       : 1.1 tg42cdec (squid/6.9)
+
+[ X-Frame-Options ]
+        This plugin retrieves the X-Frame-Options value from the 
+        HTTP header. - More Info: 
+        http://msdn.microsoft.com/en-us/library/cc288472%28VS.85%29.
+        aspx
+
+        String       : SAMEORIGIN
+
+[ X-XSS-Protection ]
+        This plugin retrieves the X-XSS-Protection value from the 
+        HTTP header. - More Info: 
+        http://msdn.microsoft.com/en-us/library/cc288472%28VS.85%29.
+        aspx
+
+        String       : 0
+
+HTTP Headers:
+        HTTP/1.1 200 OK
+        Content-Type: text/html; charset=ISO-8859-1
+        Date: Fri, 17 Jul 2026 09:06:53 GMT
+        Expires: -1
+        Cache-Control: private, max-age=0
+        Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-7BNbqAONozvltWTW1kvElQ' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+        P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+        Content-Encoding: gzip
+        Server: gws
+        Content-Length: 27959
+        X-XSS-Protection: 0
+        X-Frame-Options: SAMEORIGIN
+        Set-Cookie: __Secure-STRP=ANmZwa22dzd-d_5nROKKrKyhN_OtO1anSH-TQLWzUC6sRqtOifPY54umBP06toDX7tX3Ag1754Wefap4Wz_a73FMuWUg1ZXl9o2u; expires=Fri, 17-Jul-2026 09:11:53 GMT; path=/; domain=.google.com; Secure; SameSite=strict
+        Set-Cookie: AEC=AdJVEauHV4yT-8t9uNlKKo__G43Ea7G6OhmvijXTPzh-zNLlL1YzuKXd6w; expires=Wed, 13-Jan-2027 09:06:53 GMT; path=/; domain=.google.com; Secure; HttpOnly; SameSite=lax
+        Set-Cookie: NID=533=BWXGYd23i3CsNzojTefKBYVL8R_c1sxM47oBkG0v2oG4HLqr0-ZLi6mTMr-ZtjITwJshDi5OlV2pZgUamLpa6dlW-OERajFc_GKTvY7FY8EbuEK-ujEBrmoErqnw7cWw5xGmiAcSG4VmHmpl1jgl7KBTJ27wq6sGwCh1D_LXQLNn3g_RTrxk7OwsBh6MVJBmkXx7-lbkXGiqs4EsI17JljI; expires=Sat, 16-Jan-2027 09:06:53 GMT; path=/; domain=.google.com; HttpOnly
+        Cache-Status: tg42cdec;detail=mismatch
+        Via: 1.1 tg42cdec (squid/6.9)
+        Connection: close
+
+                                                                                                                                                                                                                                    
+┌──(crypl-32㉿vbox)-[~]
+└─$ whatweb -a 1  google.com
+http://google.com [301 Moved Permanently] Country[UNITED STATES][US], HTTPServer[gws], IP[142.251.221.110], RedirectLocation[http://www.google.com/], Title[301 Moved], UncommonHeaders[content-security-policy-report-only,cache-status], Via-Proxy[1.1 tg42cdec (squid/6.9)], X-Frame-Options[SAMEORIGIN], X-XSS-Protection[0]
+http://www.google.com/ [200 OK] Cookies[AEC,NID,__Secure-STRP], Country[UNITED STATES][US], HTML5, HTTPServer[gws], HttpOnly[AEC,NID], IP[142.251.156.119], Script, Title[Google], UncommonHeaders[content-security-policy-report-only,cache-status], Via-Proxy[1.1 tg42cdec (squid/6.9)], X-Frame-Options[SAMEORIGIN], X-XSS-Protection[0]
+      
+      
+      
+ 3.the Harvester:
